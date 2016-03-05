@@ -1,5 +1,11 @@
+#general requires
 require "thor"
 require "bvt"
+
+
+#require other parts of the application
+require "bvt-cli/helpers.rb"
+
 
 class BvtCli < Thor
 
@@ -15,10 +21,7 @@ class BvtCli < Thor
 
 		fed = Bvt.load_federation(fed_name)
 
-		if fed == nil
-			puts "[ERROR] Unknown federation"
-			exit
-		end
+		Helpers.die("Unknown federation") if fed == nil
 
 		league_name =  ""
 		league_name = options[:l] if options[:l]
@@ -40,11 +43,7 @@ class BvtCli < Thor
 
 		league = fed.get_league(league_name)
 
-		if league == nil
-			puts "[ERROR] Unknown league"
-			exit
-		end
-
+		Helpers.die("Unknown league") if league == nil
 
 		team_name = ""
 		team_name = options[:t] if options[:t]
@@ -80,10 +79,7 @@ class BvtCli < Thor
 
 		fed = Bvt.load_federation(fed_name)
 
-		if fed == nil
-			puts "[ERROR] Unknown federation"
-			exit
-		end
+		Helpers.die("Unknown federation") if fed == nil
 
 		league_name =  ""
 		league_name = options[:l] if options[:l]
@@ -105,10 +101,7 @@ class BvtCli < Thor
 
 		league = fed.get_league(league_name)
 
-		if league == nil
-			puts "[ERROR] Unknown league"
-			exit
-		end
+		Helpers.die("Unknown league") if league == nil
 
 
 		#print league rankings
