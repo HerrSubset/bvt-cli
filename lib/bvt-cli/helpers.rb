@@ -1,4 +1,5 @@
 require "icalendar"
+require "date"
 
 module Helpers
 
@@ -54,8 +55,8 @@ module Helpers
     #create an event for each game
     games.each do |g|
       cal.event do |e|
-        e.dtstart = g.date
-        e.dtend = g.date
+        e.dtstart = DateTime.civil(g.date.year, g.date.month, g.date.day, g.date.hour, g.date.minute)
+        e.dtend = DateTime.civil(g.date.year, g.date.month, g.date.day, g.date.hour + 2, g.date.minute)
 
         if g.home_team == team_name
           e.summary = g.away_team
