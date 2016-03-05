@@ -16,35 +16,29 @@ class BvtCli < Thor
 				"Prints the calendar of a certain team. You will be prompted for the
 				relevant information if you did not provide it with the flags."
 	def calendar
+		#get federation
 		fed_name = ""
 		fed_name = options[:f] if options[:f]
-
 		fed = Bvt.load_federation(fed_name)
 
+		#exit if invalid federation was requested
 		Helpers.die("Unknown federation") if fed == nil
 
+
+		#get league
 		league_name =  ""
 		league_name = options[:l] if options[:l]
 
-		#select a league if none was given
-		if league_name == ""
-			#print all league names to the screen
-			puts "\nAvailable leagues:"
-			leagues = fed.get_league_names
-			(1..(leagues.length)).each do |n|
-			  puts "#{n}:\t#{leagues[n-1]}"
-			end
-
-			#let user select league
-			puts "Enter the number of the league you'd like to select:"
-			input = $stdin.gets.chomp.to_i
-			league_name = leagues[input - 1]
-		end
+		#ask user for league name if none was given
+		league_name = Helpers.prompt_league_name(fed) if league_name == ""
 
 		league = fed.get_league(league_name)
 
+		#exit if invalid league was requested
 		Helpers.die("Unknown league") if league == nil
 
+
+		#get team
 		team_name = ""
 		team_name = options[:t] if options[:t]
 
