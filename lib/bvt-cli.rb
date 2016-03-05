@@ -69,20 +69,8 @@ class BvtCli < Thor
 		league_name =  ""
 		league_name = options[:l] if options[:l]
 
-		#select a league if none was given
-		if league_name == ""
-			#print all league names to the screen
-			puts "\nAvailable leagues:"
-			leagues = fed.get_league_names
-			(1..(leagues.length)).each do |n|
-			  puts "#{n}:\t#{leagues[n-1]}"
-			end
-
-			#let user select league
-			puts "Enter the number of the league you'd like to select:"
-			input = $stdin.gets.chomp.to_i
-			league_name = leagues[input - 1]
-		end
+		#ask user for league name if none was given
+		league_name = Helpers.prompt_league_name(fed) if league_name == ""
 
 		league = fed.get_league(league_name)
 
