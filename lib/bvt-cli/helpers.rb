@@ -1,10 +1,16 @@
 module Helpers
+
+  
+  #displays an error message if one was given and then exits the program
   def Helpers.die(message)
     puts "[ERROR] #{message}" if message
     exit
   end
 
 
+
+  #Prompts the user for a league name. The leagues that can be selected depend
+  #on what federation was given as an argument.
   def Helpers.prompt_league_name(federation)
 
     #print all league names to the screen
@@ -23,6 +29,8 @@ module Helpers
 
 
 
+  #Prompts the user for a team name. The teams that can be selected depend
+  #on what league was given as an argument.
   def Helpers.prompt_team_name(league)
     puts "\nAvailable teams in #{league.name}:"
     team_list = league.get_teams.sort

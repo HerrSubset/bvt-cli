@@ -9,6 +9,10 @@ require "bvt-cli/helpers.rb"
 
 class BvtCli < Thor
 
+	##############################################################################
+	## Calendar Command
+	##############################################################################
+
 	option :f, :required => true
 	option :l
 	option :t
@@ -54,18 +58,26 @@ class BvtCli < Thor
 	end
 
 
+
+
+	##############################################################################
+	## Rankings Command
+	##############################################################################
+
 	option :f, :required => true
 	option :l
 	desc "rankings -f <federation> [-l <league>]", "Print the rankings table for
 				a certain league"
 	def rankings
+		#get federation
 		fed_name = ""
 		fed_name = options[:f] if options[:f]
 
 		fed = Bvt.load_federation(fed_name)
-
 		Helpers.die("Unknown federation") if fed == nil
 
+
+		#get league
 		league_name =  ""
 		league_name = options[:l] if options[:l]
 
@@ -73,7 +85,6 @@ class BvtCli < Thor
 		league_name = Helpers.prompt_league_name(fed) if league_name == ""
 
 		league = fed.get_league(league_name)
-
 		Helpers.die("Unknown league") if league == nil
 
 
@@ -93,7 +104,7 @@ class BvtCli < Thor
 		  r["name"] += " " * difference
 		end
 
-
+		#print all lines in the ranking table
 		ranking.each do |r|
 		  puts "#{r['name']}\t#{r['played']}\t#{r['3_points']}\t#{r['2_points']}\t#{r['1_point']}\t#{r['0_points']}\t#{r['won_sets']}\t#{r['lost_sets']}\t#{r['points']}"
 		end
