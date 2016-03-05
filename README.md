@@ -5,9 +5,10 @@ With this tool you can view information of several belgian volleyball federation
 This tool was written in [ruby](https://www.ruby-lang.org/en/) so you will have to install that first. Normally this should also install [rubygems](https://rubygems.org/), which will be used to install the other dependencies. Besides ruby you will also need [git](https://www.git-scm.com/).
 
 
-First you have to install [thor](http://whatisthor.com/) and [bvt](https://github.com/HerrSubset/bvt). Note that the installation command for bvt changes as its version changes.
+First you have to install [thor](http://whatisthor.com/), [icalendar](https://github.com/icalendar/icalendar) and [bvt](https://github.com/HerrSubset/bvt). Note that the installation command for bvt changes as its version changes.
 ```
   gem install thor
+  gem install icalendar
   git clone https://github.com/HerrSubset/bvt
   cd bvt
   gem build bvt.gemspec
@@ -90,4 +91,11 @@ elvoc elen                           	16	4	0	5	7	24	38	17
 warsco-units volh.eisden maasmechelen	16	3	2	1	10	20	39	14
 v.c. herenthout                      	17	3	1	2	11	21	43	13
 avoc achel b                         	16	1	2	1	12	16	43	8
+```
+
+
+It is also possible to generate ical files of a certain team's calendar. This command is completely analogous to the calendar command. Usage:
+
+```
+  bvt-cli ical -f <federation> [-l <league>] [-t <team>]
 ```
