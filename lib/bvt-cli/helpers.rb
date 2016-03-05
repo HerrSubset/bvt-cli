@@ -20,4 +20,18 @@ module Helpers
 
     return leagues[input - 1]
   end
+
+
+
+  def Helpers.prompt_team_name(league)
+    puts "\nAvailable teams in #{league.name}:"
+    team_list = league.get_teams.sort
+    (1..(team_list.length)).each do |n|
+      puts "#{n}:\t#{team_list[n-1]}"
+    end
+
+    puts "Enter the number of the team you'd like to select:"
+    input = $stdin.gets.chomp.to_i
+    team_name = team_list[input - 1]
+  end
 end

@@ -38,22 +38,13 @@ class BvtCli < Thor
 		Helpers.die("Unknown league") if league == nil
 
 
-		#get team
+		#get team name
 		team_name = ""
 		team_name = options[:t] if options[:t]
+		team_name = Helpers.prompt_team_name(league) if team_name == ""
 
-		if team_name == ""
-			puts "\nAvailable teams in #{league.name}:"
-			team_list = league.get_teams.sort
-			(1..(team_list.length)).each do |n|
-			  puts "#{n}:\t#{team_list[n-1]}"
-			end
 
-			puts "Enter the number of the team you'd like to select:"
-			input = $stdin.gets.chomp.to_i
-			team_name = team_list[input - 1]
-		end
-
+		#print calendar to screen
 		puts "\nCalendar for #{team_name}:"
 		team_games = league.get_team_games(team_name)
 
