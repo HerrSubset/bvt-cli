@@ -5,7 +5,7 @@ With this tool you can view information of several belgian volleyball federation
 This tool was written in [ruby](https://www.ruby-lang.org/en/) so you will have to install that first. Normally this should also install [rubygems](https://rubygems.org/), which will be used to install the other dependencies. Besides ruby you will also need [git](https://www.git-scm.com/).
 
 
-First you have to install [thor](http://whatisthor.com/) and [bvt](https://github.com/HerrSubset/bvt). Note that the installation command for bvt change as its version changes.
+First you have to install [thor](http://whatisthor.com/) and [bvt](https://github.com/HerrSubset/bvt). Note that the installation command for bvt changes as its version changes.
 ```
   gem install thor
   git clone https://github.com/HerrSubset/bvt
