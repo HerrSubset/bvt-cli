@@ -99,3 +99,5 @@ It is also possible to generate ical files of a certain team's calendar. This co
 ```
   bvt-cli ical -f <federation> [-l <league>] [-t <team>]
 ```
+
+It will create a .ics file in your current directory that contains the calendar.
