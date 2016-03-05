@@ -9,6 +9,7 @@ First you have to install [thor](http://whatisthor.com/) and [bvt](https://githu
 ```
   gem install thor
   git clone https://github.com/HerrSubset/bvt
+  cd bvt
   gem build bvt.gemspec
   gem install bvt-X.X.X.gem
 ```
@@ -18,6 +19,7 @@ Now that you have all dependencies, you can install bvt-cli.
 
 ```
   git clone https://github.com/HerrSubset/bvt-cli
+  cd bvt-cli
   gem build bvt-cli.gemspec
   gem install bvt-cli-X.X.X.gem
 ```
@@ -30,7 +32,7 @@ bvt-cli uses a few subcommands that allows you to access it's functionality. The
   bvt-cli calendar -f <federation> [-l <league>] [-t <team>]
 ```
 
-The league and team flag are optional. In case you don't provide values for the, you will be prompted for them.
+The league and team flag are optional. In case you don't provide values for them, you will be prompted for them.
 
 Example usage:
 ```
