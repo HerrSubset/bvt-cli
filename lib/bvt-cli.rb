@@ -3,7 +3,7 @@ require "bvt"
 
 class BvtCli < Thor
 
-	option :f
+	option :f, :required => true
 	option :l
 	option :t
 	desc "calendar -f <federation> [-l <league>] [-t <team>]",
