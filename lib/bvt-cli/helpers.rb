@@ -1,6 +1,8 @@
+require "icalendar"
+
 module Helpers
 
-  
+
   #displays an error message if one was given and then exits the program
   def Helpers.die(message)
     puts "[ERROR] #{message}" if message
@@ -41,5 +43,30 @@ module Helpers
     puts "Enter the number of the team you'd like to select:"
     input = $stdin.gets.chomp.to_i
     team_name = team_list[input - 1]
+  end
+
+
+  #Creates an ical file of the selected team's calendar
+  def Helpers.create_ical(team_name, league)
+    games = league.get_team_games(team_name)
+    cal = Icalendar::Calendar.new
+
+    #create an event for each game
+    games.each do |g|
+      cal.event do |e|
+        e.dtstart = g.date
+        e.dtend = g.date
+
+        if g.home_team == team_name
+          e.summary = g.away_team
+        else
+          e.summary = g.home_team
+        end
+
+        e.description = "#{g.home_team} - #{g.away_team}"
+      end
+    end
+
+    return cal.to_ical
   end
 end

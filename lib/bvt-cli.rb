@@ -125,4 +125,50 @@ class BvtCli < Thor
 		  puts "#{r['name']}\t#{r['played']}\t#{r['3_points']}\t#{r['2_points']}\t#{r['1_point']}\t#{r['0_points']}\t#{r['won_sets']}\t#{r['lost_sets']}\t#{r['points']}"
 		end
 	end
+
+
+
+
+	##############################################################################
+	## Ical Command
+	##############################################################################
+
+	option :f, :required => true
+	option :l
+	option :t
+	desc "ical -f <federation> [-l <league>] [-t <team>]",
+				"Creates an ical file for a certain team. You will be prompted for the
+				relevant information if you did not provide it with the flags."
+	def ical
+		#get federation
+		fed_name = ""
+		fed_name = options[:f] if options[:f]
+		fed = Bvt.load_federation(fed_name)
+
+		#exit if invalid federation was requested
+		Helpers.die("Unknown federation") if fed == nil
+
+
+		#get league
+		league_name =  ""
+		league_name = options[:l] if options[:l]
+
+		#ask user for league name if none was given
+		league_name = Helpers.prompt_league_name(fed) if league_name == ""
+
+		league = fed.get_league(league_name)
+
+		#exit if invalid league was requested
+		Helpers.die("Unknown league") if league == nil
+
+
+		#get team name
+		team_name = ""
+		team_name = options[:t] if options[:t]
+		team_name = Helpers.prompt_team_name(league) if team_name == ""
+
+
+		#create ical
+		File.write("./#{team_name}.ics", Helpers.create_ical(team_name, league))
+	end
 end
