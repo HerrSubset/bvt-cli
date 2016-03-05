@@ -104,6 +104,22 @@ class BvtCli < Thor
 		  r["name"] += " " * difference
 		end
 
+		#print table header
+		header_holder = Array.new
+		header_holder.push("Team")
+		header_holder[0] += " " * (longest - "Team".length)
+		header_holder.push("G")
+		header_holder.push("W3-0/1")
+		header_holder.push("W3-2")
+		header_holder.push("L2-3")
+		header_holder.push("L0/1-3")
+		header_holder.push("WS")
+		header_holder.push("LS")
+		header_holder.push("P")
+
+		puts header_holder.join("\t")
+
+
 		#print all lines in the ranking table
 		ranking.each do |r|
 		  puts "#{r['name']}\t#{r['played']}\t#{r['3_points']}\t#{r['2_points']}\t#{r['1_point']}\t#{r['0_points']}\t#{r['won_sets']}\t#{r['lost_sets']}\t#{r['points']}"
