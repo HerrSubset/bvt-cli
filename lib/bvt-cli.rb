@@ -68,4 +68,68 @@ class BvtCli < Thor
 		  puts g.to_s
 		end
 	end
+
+
+	option :f, :required => true
+	option :l
+	desc "rankings -f <federation> [-l <league>]", "Print the rankings table for
+				a certain league"
+	def rankings
+		fed_name = ""
+		fed_name = options[:f] if options[:f]
+
+		fed = Bvt.load_federation(fed_name)
+
+		if fed == nil
+			puts "[ERROR] Unknown federation"
+			exit
+		end
+
+		league_name =  ""
+		league_name = options[:l] if options[:l]
+
+		#select a league if none was given
+		if league_name == ""
+			#print all league names to the screen
+			puts "\nAvailable leagues:"
+			leagues = fed.get_league_names
+			(1..(leagues.length)).each do |n|
+			  puts "#{n}:\t#{leagues[n-1]}"
+			end
+
+			#let user select league
+			puts "Enter the number of the league you'd like to select:"
+			input = $stdin.gets.chomp.to_i
+			league_name = leagues[input - 1]
+		end
+
+		league = fed.get_league(league_name)
+
+		if league == nil
+			puts "[ERROR] Unknown league"
+			exit
+		end
+
+
+		#print league rankings
+		ranking = league.get_rankings
+
+		#make all team name strings equal in length by adding spaces
+		longest = 0
+		ranking.each do |r|
+		  if r["name"].length > longest
+		    longest = r["name"].length
+		  end
+		end
+
+		ranking.each do |r|
+		  difference = longest - r["name"].length
+		  r["name"] += " " * difference
+		end
+
+
+		ranking.each do |r|
+		  puts "#{r['name']}\t#{r['played']}\t#{r['3_points']}\t#{r['2_points']}\t#{r['1_point']}\t#{r['0_points']}\t#{r['won_sets']}\t#{r['lost_sets']}\t#{r['points']}"
+		end
+	end
 end
