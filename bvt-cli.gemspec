@@ -7,5 +7,5 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("{bin,lib}/**/*")
   s.license = "MIT"
 
-  s.executables = ["bvt-cli"]
+  s.executables = ["bvt"]
 end
