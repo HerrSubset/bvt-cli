@@ -30,14 +30,14 @@ Now that you have all dependencies, you can install bvt-cli.
 bvt-cli uses a few subcommands that allows you to access it's functionality. The first one is the *calendar* subcommand.
 
 ```
-  bvt-cli calendar -f <federation> [-l <league>] [-t <team>]
+  bvt calendar -f <federation> [-l <league>] [-t <team>]
 ```
 
 The league and team flag are optional. In case you don't provide values for them, you will be prompted for them.
 
 Example usage:
 ```
-$ bvt-cli calendar -f vvb -l "2de divisie heren A" -t "mendo booischot c"
+$ bvt calendar -f vvb -l "2de divisie heren A" -t "mendo booischot c"
 [INFO] loading vvb
 
 Calendar for mendo booischot c:
@@ -70,14 +70,14 @@ h2a-0132  23/04/2016	vc camba geel - mendo booischot c
 The second subcommand is the one for *rankings*. The usage is very similar.
 
 ```
-  bvt-cli rankings -f <federation> [-l <league>]
+  bvt rankings -f <federation> [-l <league>]
 ```
 
 Also this time the league flag is optional.
 
 Example usage:
 ```
-$ bvt-cli rankings -f vvb -l "2de divisie heren A"
+$ bvt rankings -f vvb -l "2de divisie heren A"
 [INFO] loading vvb
 kvc sparvoc lanaken-briegden         	16	10	4	0	2	44	15	38
 vc flamingo's-heidesmash nijlen      	16	11	1	2	2	41	19	37
@@ -97,7 +97,7 @@ avoc achel b                         	16	1	2	1	12	16	43	8
 It is also possible to generate ical files of a certain team's calendar. This command is completely analogous to the calendar command. Usage:
 
 ```
-  bvt-cli ical -f <federation> [-l <league>] [-t <team>]
+  bvt ical -f <federation> [-l <league>] [-t <team>]
 ```
 
 It will create a .ics file in your current directory that contains the calendar.
