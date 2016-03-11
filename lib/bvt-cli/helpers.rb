@@ -12,6 +12,23 @@ module Helpers
 
 
 
+  #prompts the user for a federation name
+  def Helpers.prompt_federation_name
+    puts "\nAvailable Federations:"
+    federations = Bvt.get_federation_names
+    (1..(federations.length)).each do |n|
+      puts "#{n}:\t#{federations[n-1]}"
+    end
+
+    #let user select league
+    puts "Enter the number of the federation you'd like to select:"
+    input = $stdin.gets.chomp.to_i
+
+    return federations[input - 1]
+  end
+
+
+
   #Prompts the user for a league name. The leagues that can be selected depend
   #on what federation was given as an argument.
   def Helpers.prompt_league_name(federation)

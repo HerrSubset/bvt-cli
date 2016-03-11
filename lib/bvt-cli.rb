@@ -13,7 +13,7 @@ class BvtCli < Thor
 	## Calendar Command
 	##############################################################################
 
-	option :f, :required => true
+	option :f
 	option :l
 	option :t
 	desc "calendar -f <federation> [-l <league>] [-t <team>]",
@@ -23,6 +23,10 @@ class BvtCli < Thor
 		#get federation
 		fed_name = ""
 		fed_name = options[:f] if options[:f]
+
+		#ask user for federation if none was given
+		fed_name = Helpers.prompt_federation_name if fed_name == ""
+
 		fed = Bvt.load_federation(fed_name)
 
 		#exit if invalid federation was requested
@@ -64,7 +68,7 @@ class BvtCli < Thor
 	## Rankings Command
 	##############################################################################
 
-	option :f, :required => true
+	option :f
 	option :l
 	desc "rankings -f <federation> [-l <league>]", "Print the rankings table for
 				a certain league"
@@ -72,6 +76,9 @@ class BvtCli < Thor
 		#get federation
 		fed_name = ""
 		fed_name = options[:f] if options[:f]
+
+		#ask user for federation if none was given
+		fed_name = Helpers.prompt_federation_name if fed_name == ""
 
 		fed = Bvt.load_federation(fed_name)
 		Helpers.die("Unknown federation") if fed == nil
@@ -133,7 +140,7 @@ class BvtCli < Thor
 	## Ical Command
 	##############################################################################
 
-	option :f, :required => true
+	option :f
 	option :l
 	option :t
 	desc "ical -f <federation> [-l <league>] [-t <team>]",
@@ -143,6 +150,10 @@ class BvtCli < Thor
 		#get federation
 		fed_name = ""
 		fed_name = options[:f] if options[:f]
+
+		#ask user for federation if none was given
+		fed_name = Helpers.prompt_federation_name if fed_name == ""
+
 		fed = Bvt.load_federation(fed_name)
 
 		#exit if invalid federation was requested
