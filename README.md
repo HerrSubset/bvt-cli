@@ -30,39 +30,39 @@ Now that you have all dependencies, you can install bvt-cli.
 bvt-cli uses a few subcommands that allows you to access it's functionality. The first one is the *calendar* subcommand.
 
 ```
-  bvt calendar -f <federation> [-l <league>] [-t <team>]
+  bvt calendar [-f <federation>] [-l <league>] [-t <team>]
 ```
 
-The league and team flag are optional. In case you don't provide values for them, you will be prompted for them.
+All the flags are optional. In case you don't provide values for them, you will be prompted for them.
 
 Example usage:
 ```
-$ bvt calendar -f vvb -l "2de divisie heren A" -t "mendo booischot c"
-[INFO] loading vvb
+$ bvt calendar -f vvb -l "2de divisie heren A" -t "MENDO BOOISCHOT C"
 
-Calendar for mendo booischot c:
-h2a-0094  13/09/2015	mendo booischot c - v.c. zoersel b   3-0
-h2a-0004  19/09/2015	elvoc elen - mendo booischot c   1-3
-h2a-0010  11/10/2015	mendo booischot c - vc flamingo's-heidesmash nijlen   1-3
-h2a-0014  17/10/2015	v.c. herenthout - mendo booischot c   2-3
-h2a-0022  25/10/2015	mendo booischot c - wara genk b   3-0
-h2a-0030  08/11/2015	v.c. zoersel b - mendo booischot c   3-0
-h2a-0034  15/11/2015	mendo booischot c - kvc sparvoc lanaken-briegden   2-3
-h2a-0038  21/11/2015	vck bolderberg - mendo booischot c   1-3
-h2a-0044  29/11/2015	mendo booischot c - avoc achel b   3-1
-h2a-0054  06/12/2015	mendo booischot c - he-voc hechtel-eksel   3-0
-h2a-0058  12/12/2015	warsco-units volh.eisden maasmechelen - mendo booischot c   1-3
-h2a-0064  10/01/2016	mendo booischot c - vc camba geel   3-1
-h2a-0070  17/01/2016	mendo booischot c - elvoc elen   3-1
-h2a-0075  24/01/2016	vc flamingo's-heidesmash nijlen - mendo booischot c   3-1
-h2a-0082  31/01/2016	mendo booischot c - v.c. herenthout   3-0
-h2a-0085  21/02/2016	wara genk b - mendo booischot c   1-3
-h2a-0101  05/03/2016	kvc sparvoc lanaken-briegden - mendo booischot c
-h2a-0104  13/03/2016	mendo booischot c - vck bolderberg
-h2a-0114  19/03/2016	avoc achel b - mendo booischot c
-h2a-0120  09/04/2016	he-voc hechtel-eksel - mendo booischot c
-h2a-0124  17/04/2016	mendo booischot c - warsco-units volh.eisden maasmechelen
-h2a-0132  23/04/2016	vc camba geel - mendo booischot c
+Calendar for MENDO BOOISCHOT C:
+H2A-0094  13/09/2015	MENDO BOOISCHOT C - V.C. ZOERSEL B   3-0
+H2A-0004  19/09/2015	ELVOC ELEN - MENDO BOOISCHOT C   1-3
+H2A-0010  11/10/2015	MENDO BOOISCHOT C - VC FLAMINGO'S-HEIDESMASH NIJLEN   1-3
+H2A-0014  17/10/2015	V.C. HERENTHOUT - MENDO BOOISCHOT C   2-3
+H2A-0022  25/10/2015	MENDO BOOISCHOT C - WARA GENK B   3-0
+H2A-0030  08/11/2015	V.C. ZOERSEL B - MENDO BOOISCHOT C   3-0
+H2A-0034  15/11/2015	MENDO BOOISCHOT C - KVC SPARVOC LANAKEN-BRIEGDEN   2-3
+H2A-0038  21/11/2015	VCK BOLDERBERG - MENDO BOOISCHOT C   1-3
+H2A-0044  29/11/2015	MENDO BOOISCHOT C - AVOC ACHEL B   3-1
+H2A-0054  06/12/2015	MENDO BOOISCHOT C - HE-VOC HECHTEL-EKSEL   3-0
+H2A-0058  12/12/2015	WARSCO-UNITS VOLH.EISDEN MAASMECHELEN - MENDO BOOISCHOT C   1-3
+H2A-0064  10/01/2016	MENDO BOOISCHOT C - VC CAMBA GEEL   3-1
+H2A-0070  17/01/2016	MENDO BOOISCHOT C - ELVOC ELEN   3-1
+H2A-0075  24/01/2016	VC FLAMINGO'S-HEIDESMASH NIJLEN - MENDO BOOISCHOT C   3-1
+H2A-0082  31/01/2016	MENDO BOOISCHOT C - V.C. HERENTHOUT   3-0
+H2A-0085  21/02/2016	WARA GENK B - MENDO BOOISCHOT C   1-3
+H2A-0101  05/03/2016	KVC SPARVOC LANAKEN-BRIEGDEN - MENDO BOOISCHOT C   2-3
+H2A-0104  13/03/2016	MENDO BOOISCHOT C - VCK BOLDERBERG
+H2A-0114  19/03/2016	AVOC ACHEL B - MENDO BOOISCHOT C
+H2A-0120  09/04/2016	HE-VOC HECHTEL-EKSEL - MENDO BOOISCHOT C
+H2A-0124  17/04/2016	MENDO BOOISCHOT C - WARSCO-UNITS VOLH.EISDEN MAASMECHELEN
+H2A-0132  23/04/2016	VC CAMBA GEEL - MENDO BOOISCHOT C
+
 ```
 
 
@@ -70,7 +70,7 @@ h2a-0132  23/04/2016	vc camba geel - mendo booischot c
 The second subcommand is the one for *rankings*. The usage is very similar.
 
 ```
-  bvt rankings -f <federation> [-l <league>]
+  bvt rankings [-f <federation>] [-l <league>]
 ```
 
 Also this time the league flag is optional.
@@ -78,26 +78,26 @@ Also this time the league flag is optional.
 Example usage:
 ```
 $ bvt rankings -f vvb -l "2de divisie heren A"
-[INFO] loading vvb
-kvc sparvoc lanaken-briegden         	16	10	4	0	2	44	15	38
-vc flamingo's-heidesmash nijlen      	16	11	1	2	2	41	19	37
-mendo booischot c                    	16	11	1	1	3	40	21	36
-v.c. zoersel b                       	16	10	0	0	6	33	24	30
-vc camba geel                        	17	8	2	1	6	37	32	29
-he-voc hechtel-eksel                 	16	8	1	2	5	33	28	28
-wara genk b                          	16	5	3	1	7	31	34	22
-vck bolderberg                       	16	5	1	2	8	29	33	19
-elvoc elen                           	16	4	0	5	7	24	38	17
-warsco-units volh.eisden maasmechelen	16	3	2	1	10	20	39	14
-v.c. herenthout                      	17	3	1	2	11	21	43	13
-avoc achel b                         	16	1	2	1	12	16	43	8
+Team                                 	G	W3-0/1	W3-2	L2-3	L0/1-3	WS	LS	P
+VC FLAMINGO'S-HEIDESMASH NIJLEN      	17	12	1	2	2	44	19	40
+KVC SPARVOC LANAKEN-BRIEGDEN         	17	10	4	1	2	46	18	39
+MENDO BOOISCHOT C                    	17	11	2	1	3	43	23	38
+HE-VOC HECHTEL-EKSEL                 	17	9	1	2	5	36	29	31
+V.C. ZOERSEL B                       	17	10	0	0	7	33	27	30
+VC CAMBA GEEL                        	17	8	2	1	6	37	32	29
+VCK BOLDERBERG                       	17	6	1	2	8	32	34	22
+WARA GENK B                          	17	5	3	1	8	32	37	22
+ELVOC ELEN                           	17	4	0	5	8	25	41	17
+WARSCO-UNITS VOLH.EISDEN MAASMECHELEN	17	3	2	1	11	20	42	14
+V.C. HERENTHOUT                      	17	3	1	2	11	21	43	13
+AVOC ACHEL B                         	17	2	2	1	12	19	43	11
 ```
 
 
 It is also possible to generate ical files of a certain team's calendar. This command is completely analogous to the calendar command. Usage:
 
 ```
-  bvt ical -f <federation> [-l <league>] [-t <team>]
+  bvt ical [-f <federation>] [-l <league>] [-t <team>]
 ```
 
 It will create a .ics file in your current directory that contains the calendar.
